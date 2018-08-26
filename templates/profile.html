@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link ref = "stylesheet" type="text/css" href="/static/c2.css"/>
+<body>
+<h>head</h>
+<br>
+profile : {{ uid }} <br>
+
+{# 看不到我 #}
+{% for i in range(0, 5): %}
+profile: i <br>
+{% endfor %}
+
+{% macro render_color(color) %}
+<div>This is color {{ color }}</div><br> {{caller ()}}
+{% endmacro %}
+
+# for color in colors:
+{% call render_color(color) %}
+    render_color_demo
+    {% endcall%}
+# endfor
+{% for color in colors: %}
+{{ loop.index }}{{color}} <br>
+{% endfor %}
+
+{% filter upper %}
+{% for k, v in info.items(): %}
+{{ k }}, {{v}} <br>
+{% endfor %}
+{% endfilter %}
+</body>
+</html>
